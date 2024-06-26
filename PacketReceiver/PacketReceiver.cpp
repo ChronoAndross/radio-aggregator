@@ -54,7 +54,7 @@ std::string PacketReceiver::pollMessage() {
     if (isSocketOpen()) {
         int numBytes = -1;
         char readBuffer[MAXDATASIZE];
-        if ((numBytes = recv(socketFileDesc, readBuffer, MAXDATASIZE-1, 0)) > -1) {
+        if ((numBytes = recv(socketFileDesc, readBuffer, MAXDATASIZE-1, MSG_DONTWAIT)) > -1) {
             readBuffer[numBytes] = '\0';
             outStr = std::string(readBuffer);
         }

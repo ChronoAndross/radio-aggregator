@@ -13,12 +13,15 @@ PacketThreadGroup::PacketThreadGroup(const std::list<std::shared_ptr<PacketTarge
 }
 
 PacketThreadGroup::~PacketThreadGroup() {
+    std::cout << "stopping receiving threads" << std::endl;
     for (auto& threadReceive : activeThreadsReceiving) {
         threadReceive.get()->stopThread();
     }
 
+    std::cout << "stopping sending threads" << std::endl;
     for (auto& threadSend : activeThreadsSending) {
         threadSend.get()->stopThread();
     }
 
+    std::cout << "PacketThreadGroup shutting down" << std::endl;
 }

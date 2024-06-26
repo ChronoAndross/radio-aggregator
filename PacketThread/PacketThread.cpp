@@ -17,6 +17,7 @@ void PacketThread::loopReceiver() {
             }
             std::this_thread::sleep_for(std::chrono::seconds(3));
         }
+        std::cout << "exiting loopReceiver thread of id=" << packetThread.get_id() << std::endl;
     }
 }
 
@@ -31,6 +32,7 @@ void PacketThread::loopSender() {
         }
         std::this_thread::sleep_for(std::chrono::seconds(3));
     }
+    std::cout << "exiting loopSender thread of id=" << packetThread.get_id() << std::endl;
 }
 
 PacketThread::PacketThread(PacketSender* sender) {
@@ -53,9 +55,11 @@ PacketThread::PacketThread(PacketReceiver* receiver) {
 
 void PacketThread::stopThread() {
     if (this->sender != nullptr || this->receiver != nullptr) {
-        std::cout << "exiting thread for id=" << packetThread.get_id();
+        std::cout << "exiting thread for id=" << packetThread.get_id() << std::endl;
         this->exitThread = true;
         this->packetThread.join();
+        this->sender = nullptr;
+        this->receiver = nullptr;
     } else {
         std::cout << "cant stop because thread not initialized" << std::endl;
     }
