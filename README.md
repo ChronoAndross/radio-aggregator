@@ -1,5 +1,4 @@
-
-https://github.com/ChronoAndross/radio-aggregator/assets/3382216/dedde731-9bae-4512-a9ae-3ef62adc2460
+https://github.com/ChronoAndross/radio-aggregator/assets/3382216/a7f4ae30-cb95-492b-a608-a5449d6b7f89
 
 This is a tool used to aggregate data from geographically separated inputs. Primarily this would be used for Remote Terminal Units (RTUs) or radios sending signal data.
 
